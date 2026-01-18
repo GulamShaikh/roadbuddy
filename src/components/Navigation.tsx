@@ -24,11 +24,13 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg primary-gradient flex items-center justify-center shadow-md">
-              <Wrench className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Highway Help Now Logo"
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-display font-bold text-lg md:text-xl text-foreground">
-              Mobile Garage
+              Highway Help Now
             </span>
           </Link>
 
@@ -79,11 +81,10 @@ const Navigation = () => {
                   key={link.href}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${
-                    isActive(link.href)
-                      ? "bg-primary/10 text-primary"
-                      : "hover:bg-muted"
-                  }`}
+                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${isActive(link.href)
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-muted"
+                    }`}
                 >
                   {link.label}
                 </Link>

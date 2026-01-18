@@ -9,10 +9,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg primary-gradient flex items-center justify-center">
-                <Wrench className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-display font-bold text-xl">Mobile Garage</span>
+              <img
+                src="/logo.png"
+                alt="Highway Help Now Logo"
+                className="w-10 h-10 object-contain"
+              />
+              <span className="font-display font-bold text-xl">Highway Help Now</span>
             </div>
             <p className="text-secondary-foreground/70 text-sm leading-relaxed">
               Making highways safer with instant roadside repair and towing support.
@@ -73,11 +75,11 @@ const Footer = () => {
                 1800-GARAGE
               </a>
               <a
-                href="mailto:help@mobilegarage.com"
+                href="mailto:gulamshaikh2455@gmail.com"
                 className="flex items-center gap-2 text-secondary-foreground/70 hover:text-primary transition-colors text-sm"
               >
                 <Mail className="w-4 h-4" />
-                help@mobilegarage.com
+                gulamshaikh2455@gmail.com
               </a>
               <div className="flex items-start gap-2 text-secondary-foreground/70 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
@@ -88,7 +90,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/10 mt-12 pt-8 text-center text-secondary-foreground/50 text-sm">
-          <p>© 2024 Mobile Garage. All rights reserved. Making highways safer, one rescue at a time.</p>
+          <p>© 2025 Highway Help Now by GD. All rights reserved. Making highways safer, one rescue at a time.</p>
         </div>
       </div>
     </footer>
