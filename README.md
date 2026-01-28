@@ -1,14 +1,14 @@
-# Highway Help Now
+# Road Buddy
 
 ## Project info
 
 **Author**: Gulam Dastgir  
 **Email**: gulamshaikh2455@gmail.com  
-**Repository**: https://github.com/GulamShaikh/highway-help-now.git
+**Repository**: https://github.com/GulamShaikh/roadbuddy.git
 
 ## About
 
-Highway Help Now is an emergency roadside assistance application designed to help drivers get quick help when they need it most.
+Road Buddy is an emergency roadside assistance application designed to help drivers get quick help when they need it most.
 
 ## How can I edit this code?
 
@@ -24,10 +24,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone https://github.com/GulamShaikh/highway-help-now.git
+git clone https://github.com/GulamShaikh/roadbuddy.git
 
 # Step 2: Navigate to the project directory.
-cd highway-help-now
+cd roadbuddy
 
 # Step 3: Install the necessary dependencies.
 npm i
