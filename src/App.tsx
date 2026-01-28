@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import RequestHelp from "./pages/RequestHelp";
 import Services from "./pages/Services";
+import NearbyServices from "./pages/NearbyServices";
+import WomenSafety from "./pages/WomenSafety";
 import LiveUnits from "./pages/LiveUnits";
 import AssistanceStatus from "./pages/AssistanceStatus";
 import Payment from "./pages/Payment";
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/request-help" element={<RequestHelp />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/nearby-services" element={<NearbyServices />} />
+            <Route path="/women-safety" element={<WomenSafety />} />
             <Route path="/live-units" element={<LiveUnits />} />
             <Route path="/assistance-status" element={<AssistanceStatus />} />
             <Route path="/payment" element={<Payment />} />

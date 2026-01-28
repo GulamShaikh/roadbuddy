@@ -64,7 +64,7 @@ const RequestHelp = () => {
     setLoading(true);
     // Simulate submission
     setTimeout(() => {
-      navigate("/assistance-status", { 
+      navigate("/assistance-status", {
         state: { 
           requestId: "MG-" + Math.random().toString(36).substr(2, 9).toUpperCase(),
           issueType: issueTypes.find(i => i.id === formData.issueType)?.label,

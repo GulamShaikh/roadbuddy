@@ -2,21 +2,23 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { 
-  Wrench, 
-  Car, 
-  Battery, 
-  Fuel, 
-  AlertTriangle,
   Clock,
   CheckCircle2,
   ArrowRight,
-  Truck
 } from "lucide-react";
+
+// Import service images
+import repairImg from "@/assets/services/repair.jpg";
+import tyreImg from "@/assets/services/tyre.jpg";
+import batteryImg from "@/assets/services/battery.jpg";
+import fuelImg from "@/assets/services/fuel.jpg";
+import towingImg from "@/assets/services/towing.jpg";
+import emergencyImg from "@/assets/services/emergency.jpg";
 
 const services = [
   {
     id: "repair",
-    icon: Wrench,
+    image: repairImg,
     title: "On-spot Repair",
     description: "Quick fixes for minor mechanical issues right where you are. Our technicians carry essential tools and spare parts.",
     features: ["Engine diagnostics", "Belt replacement", "Minor electrical fixes", "Fluid top-ups"],
@@ -25,7 +27,7 @@ const services = [
   },
   {
     id: "tyre",
-    icon: Car,
+    image: tyreImg,
     title: "Tyre Replacement",
     description: "Puncture repair or complete tyre replacement with high-quality spare tyres available in all sizes.",
     features: ["Puncture repair", "Tyre replacement", "Spare tyre mounting", "Tyre pressure check"],
@@ -34,7 +36,7 @@ const services = [
   },
   {
     id: "battery",
-    icon: Battery,
+    image: batteryImg,
     title: "Battery Jump-start",
     description: "Dead battery? We'll get you running with professional jump-start service or battery replacement.",
     features: ["Jump-start service", "Battery testing", "New battery installation", "Alternator check"],
@@ -43,7 +45,7 @@ const services = [
   },
   {
     id: "fuel",
-    icon: Fuel,
+    image: fuelImg,
     title: "Fuel Assistance",
     description: "Ran out of fuel? We deliver petrol, diesel, or provide assistance for fuel system issues.",
     features: ["Emergency fuel delivery", "Fuel system diagnosis", "Wrong fuel recovery", "Fuel filter check"],
@@ -52,7 +54,7 @@ const services = [
   },
   {
     id: "towing",
-    icon: Truck,
+    image: towingImg,
     title: "Towing Service",
     description: "When on-spot repair isn't possible, our flatbed tow trucks will safely transport your vehicle.",
     features: ["Flatbed towing", "Long-distance transport", "Accident recovery", "Off-road recovery"],
@@ -61,7 +63,7 @@ const services = [
   },
   {
     id: "emergency",
-    icon: AlertTriangle,
+    image: emergencyImg,
     title: "Accident Assistance",
     description: "Complete support during accidents including documentation, police coordination, and insurance help.",
     features: ["On-site assistance", "Documentation support", "Insurance coordination", "Vehicle recovery"],
@@ -88,11 +90,23 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service) => (
-            <Card key={service.id} variant="service" className="flex flex-col">
-              <CardHeader>
-                <div className="w-14 h-14 rounded-xl primary-gradient flex items-center justify-center mb-4 shadow-md">
-                  <service.icon className="w-7 h-7 text-primary-foreground" />
+            <Card key={service.id} variant="service" className="flex flex-col overflow-hidden">
+              {/* Service Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                    {service.estimatedTime}
+                  </span>
                 </div>
+              </div>
+              
+              <CardHeader className="pb-2">
                 <CardTitle className="text-xl">{service.title}</CardTitle>
                 <CardDescription className="text-base">
                   {service.description}
@@ -132,7 +146,7 @@ const Services = () => {
             Need Immediate Assistance?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Don't wait. Request help now and the nearest Mobile Garage unit will be dispatched to your location.
+            Don't wait. Request help now and the nearest Road Buddy unit will be dispatched to your location.
           </p>
           <Link to="/request-help">
             <Button variant="hero" size="lg">

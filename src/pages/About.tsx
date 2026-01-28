@@ -77,9 +77,9 @@ const About = () => {
             Making Highways <span className="text-gradient">Safer</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Mobile Garage is designed to make highways safer by placing mobile repair units 
-            at regular intervals. Our mission is to reduce wait times, improve response speed, 
-            and ensure safety for every traveler.
+            Road Buddy — Aapka Roadside Sathi — is designed to make highways safer by placing 
+            mobile repair units at regular intervals. Our mission is to reduce wait times, 
+            improve response speed, and ensure safety for every traveler.
           </p>
         </div>
 
@@ -193,7 +193,7 @@ const About = () => {
             Ready to Experience Safer Highways?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            Join thousands of travelers who trust Mobile Garage for their highway emergencies.
+            Join thousands of travelers who trust Road Buddy for their highway emergencies.
           </p>
           <Link to="/request-help">
             <Button variant="hero" size="lg">
