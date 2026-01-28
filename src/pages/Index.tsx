@@ -1,21 +1,27 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { 
   ArrowRight, 
   Clock, 
   MapPin, 
   Shield, 
-  Wrench, 
   Zap,
   Phone,
   ChevronRight,
-  Car,
-  Battery,
+  ShieldAlert,
   Fuel,
-  AlertTriangle
+  Hospital,
+  Wrench
 } from "lucide-react";
-import heroVan from "@/assets/hero-van.jpg";
+import heroImage from "@/assets/road-buddy-hero.jpg";
+
+// Import service images
+import repairImg from "@/assets/services/repair.jpg";
+import tyreImg from "@/assets/services/tyre.jpg";
+import batteryImg from "@/assets/services/battery.jpg";
+import fuelImg from "@/assets/services/fuel.jpg";
+import towingImg from "@/assets/services/towing.jpg";
 
 const Index = () => {
   const features = [
@@ -37,11 +43,11 @@ const Index = () => {
   ];
 
   const services = [
-    { icon: Wrench, name: "On-spot Repair", time: "~20 min" },
-    { icon: Car, name: "Tyre Replacement", time: "~15 min" },
-    { icon: Battery, name: "Battery Jump-start", time: "~10 min" },
-    { icon: Fuel, name: "Fuel Assistance", time: "~15 min" },
-    { icon: AlertTriangle, name: "Towing Service", time: "~25 min" },
+    { image: repairImg, name: "On-spot Repair", time: "~20 min" },
+    { image: tyreImg, name: "Tyre Replacement", time: "~15 min" },
+    { image: batteryImg, name: "Battery Jump-start", time: "~10 min" },
+    { image: fuelImg, name: "Fuel Assistance", time: "~15 min" },
+    { image: towingImg, name: "Towing Service", time: "~25 min" },
   ];
 
   const stats = [
@@ -51,14 +57,20 @@ const Index = () => {
     { value: "500+", label: "Highway Coverage (km)" },
   ];
 
+  const nearbyServices = [
+    { icon: Fuel, name: "Petrol Pumps", count: "12 nearby" },
+    { icon: Hospital, name: "Hospitals", count: "8 nearby" },
+    { icon: Wrench, name: "Garages", count: "15 nearby" },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src={heroVan} 
-            alt="Mobile Garage Service Van"
+            src={heroImage} 
+            alt="Road Buddy Service"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/95 to-secondary/80" />
@@ -71,14 +83,16 @@ const Index = () => {
               <span className="text-sm font-medium">Highway Emergency? Help is minutes away</span>
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6 slide-up">
-              🚘 Mobile Garage — <br />
-              <span className="text-gradient">Help Comes to You</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-2 slide-up">
+              Road Buddy
             </h1>
+            <p className="text-xl md:text-2xl text-primary font-display font-semibold mb-6 slide-up">
+              Aapka Roadside Sathi 🤝
+            </p>
             
             <p className="text-xl md:text-2xl text-secondary-foreground/80 mb-8 leading-relaxed slide-up">
               Instant roadside repair and towing support on highways. 
-              Our mobile units are stationed nearby, ready to respond in minutes.
+              Your trusted companion when you need help the most.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 slide-up">
@@ -95,6 +109,13 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
+
+            {/* Women Safety Quick Access */}
+            <Link to="/women-safety" className="inline-flex items-center gap-2 mt-6 text-destructive hover:text-destructive/80 transition-colors slide-up">
+              <ShieldAlert className="w-5 h-5" />
+              <span className="font-medium">Women Safety - Emergency SOS</span>
+              <ChevronRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
 
@@ -124,12 +145,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Nearby Services Quick Access */}
+      <section className="py-8 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h2 className="font-display text-xl font-bold text-foreground">
+                Connected Services Near You
+              </h2>
+              <p className="text-muted-foreground text-sm">
+                Find petrol pumps, hospitals & garages instantly
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              {nearbyServices.map((service) => (
+                <div key={service.name} className="flex items-center gap-2 bg-background rounded-lg px-4 py-2 shadow-sm">
+                  <service.icon className="w-5 h-5 text-primary" />
+                  <div>
+                    <div className="font-medium text-sm text-foreground">{service.name}</div>
+                    <div className="text-xs text-success">{service.count}</div>
+                  </div>
+                </div>
+              ))}
+              <Link to="/nearby-services">
+                <Button variant="outline" size="sm">
+                  View Map
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose Mobile Garage?
+              Why Choose Road Buddy?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Traditional roadside assistance makes you wait. We bring the garage to you.
@@ -176,18 +230,52 @@ const Index = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {services.map((service) => (
-              <Card key={service.name} variant="service" className="p-6 text-center">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-                  <service.icon className="w-6 h-6" />
+              <Card key={service.name} variant="service" className="overflow-hidden">
+                <div className="relative h-32">
+                  <img 
+                    src={service.image} 
+                    alt={service.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <h4 className="font-semibold text-white text-sm">
+                      {service.name}
+                    </h4>
+                    <span className="text-xs text-success font-medium">
+                      {service.time}
+                    </span>
+                  </div>
                 </div>
-                <h4 className="font-semibold text-foreground mb-1 text-sm md:text-base">
-                  {service.name}
-                </h4>
-                <span className="text-xs text-success font-medium">
-                  {service.time}
-                </span>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Women Safety CTA */}
+      <section className="py-12 bg-destructive/10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-destructive/20 flex items-center justify-center">
+                <ShieldAlert className="w-8 h-8 text-destructive" />
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  Women Safety Feature
+                </h3>
+                <p className="text-muted-foreground">
+                  SOS alerts, emergency numbers, live location sharing with police
+                </p>
+              </div>
+            </div>
+            <Link to="/women-safety">
+              <Button variant="destructive" size="lg">
+                Access Safety Features
+                <ShieldAlert className="w-5 h-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -205,7 +293,7 @@ const Index = () => {
               Stranded on the Highway?
             </h2>
             <p className="text-xl text-secondary-foreground/80 mb-8">
-              Don't wait for hours. Get instant help from the nearest Mobile Garage unit.
+              Don't wait for hours. Get instant help from the nearest Road Buddy unit.
             </p>
             <Link to="/request-help">
               <Button variant="hero" size="xl" className="shadow-2xl">
@@ -214,7 +302,7 @@ const Index = () => {
               </Button>
             </Link>
             <p className="mt-6 text-secondary-foreground/60 text-sm">
-              Or call our emergency hotline: <span className="text-primary font-semibold">1800-GARAGE</span>
+              Or call our emergency hotline: <span className="text-primary font-semibold">1800-ROADBUDDY</span>
             </p>
           </div>
         </div>

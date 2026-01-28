@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Wrench, Phone } from "lucide-react";
+import { Menu, X, Phone, ShieldAlert } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +11,8 @@ const Navigation = () => {
     { href: "/", label: "Home" },
     { href: "/request-help", label: "Request Help" },
     { href: "/services", label: "Services" },
+    { href: "/nearby-services", label: "Nearby Services" },
+    { href: "/women-safety", label: "Women Safety", highlight: true },
     { href: "/live-units", label: "Live Units" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
@@ -26,12 +28,17 @@ const Navigation = () => {
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/logo.png"
-              alt="Highway Help Now Logo"
+              alt="Road Buddy Logo"
               className="w-10 h-10 object-contain"
             />
-            <span className="font-display font-bold text-lg md:text-xl text-foreground">
-              Highway Help Now
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-lg md:text-xl text-foreground leading-tight">
+                Road Buddy
+              </span>
+              <span className="text-xs text-muted-foreground hidden sm:block">
+                Aapka roadside sathi
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -39,9 +46,11 @@ const Navigation = () => {
             {navLinks.map((link) => (
               <Link key={link.href} to={link.href}>
                 <Button
-                  variant="nav"
-                  className={isActive(link.href) ? "text-primary font-semibold" : ""}
+                  variant={link.highlight ? "emergency" : "nav"}
+                  size="sm"
+                  className={`${isActive(link.href) ? "text-primary font-semibold" : ""} ${link.highlight ? "flex items-center gap-1" : ""}`}
                 >
+                  {link.highlight && <ShieldAlert className="w-3 h-3" />}
                   {link.label}
                 </Button>
               </Link>
@@ -81,11 +90,15 @@ const Navigation = () => {
                   key={link.href}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${isActive(link.href)
-                    ? "bg-primary/10 text-primary"
-                    : "hover:bg-muted"
-                    }`}
+                  className={`px-4 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                    link.highlight 
+                      ? "bg-destructive/10 text-destructive" 
+                      : isActive(link.href)
+                        ? "bg-primary/10 text-primary"
+                        : "hover:bg-muted"
+                  }`}
                 >
+                  {link.highlight && <ShieldAlert className="w-4 h-4" />}
                   {link.label}
                 </Link>
               ))}
